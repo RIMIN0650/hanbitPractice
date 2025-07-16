@@ -1,6 +1,7 @@
 package kr.co.rimin;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,9 +27,10 @@ public class SimpleRestController {
 //    }
     // HTML로 작성한 코드도 출력 화면에 반영되는 것을 확인 가능.
 
-    @RequestMapping("/article")
-    public String createArticle(){
-        return "SOME MESSAGE";
+    @RequestMapping("/article") // /article 요청을 처리할 수 있는 @RequestMapping
+    public String createArticle(@RequestParam("title") String title
+                                , @RequestParam("content") String content){
+        return String.format("title=%s / content=%s", title, content);
     }
 
 
